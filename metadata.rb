@@ -1,3 +1,4 @@
+name             "composer"
 maintainer       "Morphodo"
 maintainer_email "development@morphodo.com"
 license          "MIT"
