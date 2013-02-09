@@ -138,6 +138,30 @@ For detailed usage instructions visit https://github.com/applicationsonline/libr
   cookbook "composer",
     :git => "git://github.com/Morphodo/composer.git"
 
+Using knife-github-cookbooks
+-----------------
+The ``knife-github-cookbooks`` gem is a plugin for *knife* that supports
+installing cookbooks directly from a GitHub repository. To install with the
+plugin:
+
+::
+
+    gem install knife-github-cookbooks
+    cd chef-repo
+    knife cookbook github install Morphodo/composer/0.1.0
+
+
+As a Git Submodule
+-----------------
+A common practice (which is getting dated) is to add cookbooks as Git
+submodules. This is accomplishes like so:
+
+::
+
+    cd chef-repo
+    git submodule add git://github.com/Morphodo/composer.git cookbooks/composer
+    git submodule init && git submodule update
+
 Using ``git clone``
 -----------------
 Just go into your ``cookbooks`` directory and clone this repository.
@@ -145,6 +169,17 @@ Just go into your ``cookbooks`` directory and clone this repository.
 ::
 
   git clone git://github.com/Morphodo/composer.git
+
+As a Tarball
+-----------------
+If the cookbook needs to downloaded temporarily just to be uploaded to a Chef
+Server or Opscode Hosted Chef, then a tarball installation might fit the bill:
+
+::
+
+    cd chef-repo/cookbooks
+    curl -Ls https://github.com/Morphodo/composer/0.1.0 | tar xfz - && \
+      mv Morphodo-composer-* composer
 
 .. _PylonWorks.Essencebase: http://github.com/PylonWorks/essencebase-chef-recipe
 .. _Packagist : http://packagist.org/
